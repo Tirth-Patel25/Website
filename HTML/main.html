@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guru Enterprise</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Slab:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="box">
+        <div class="form-box">
+            <div class="buttons">
+                <div id="btns"></div>
+                <button type="button" class="login" style="font-family: Josefin Slab;" onclick="login()">Log in</button>
+                <button type="button" class="signin" style="font-family: Josefin Slab;" onclick="signin()">Sign in</button>
+            </div>
+            <form id="Log-in" class="inputs" action="validation.php" method="post">
+                <input type="text" class="input" placeholder="User Name" name="uname" required>
+                <input type="password" class="input" placeholder="Password" name="upass" required>
+                <button type="submit" class="submit" style="font-family: Josefin Slab;">log in</button>
+            </form>
+            <form id="Sign-in" class="inputs" action=".../signin.php" method="post">
+                <input type="text" class="input" placeholder="User Name" name="uname" required>
+                <input type="text" class="input" placeholder="Email-Id" name="uemail" required>
+                <input type="text" class="input" placeholder="Password" name="upass" required>
+                <button type="submit" class="submit" style="font-family: Josefin Slab;">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var x=document.getElementById("Log-in");
+        var y=document.getElementById("Sign-in");
+        var z=document.getElementById("btns");
+
+        function signin(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";
+        }
+    </script>
+</body>
+</html>

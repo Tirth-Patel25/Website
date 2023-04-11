@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guru Enterprise</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Water+Brush&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav>
+        <div class="navlogo">
+            <img src="home/navlogo.png" alt="logo" id="logo" height="50px" width="50px">
+        </div>
+        <div class="name">
+            GURU ENTERPRISE
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Image Slider -->
+
+    <div class="slider">
+        
+        <!-- 1st Image -->
+        
+        <div class="slide active">
+            <img src="home/slideimg1.jpg" style="background: rgba(90, 90, 90, 0.3);" alt="1st img">
+            <div class="info">
+                <h2 style="font-family: Water Brush;font-weight: 900;font-size: 4em;">Image 1</h2>
+                <p style="font-family: Water Brush;font-weight: 500;font-size: 2em;">Something about Image 1 blah blah blah</p>
+            </div>
+        </div>
+        
+        <!-- 2nd Image -->
+        
+        <div class="slide">
+            <img src="home/pic1.jpg" alt="2nd img">
+            <div class="info">
+                <h2 style="font-family: Water Brush;font-weight: 900;font-size: 4em;">Image 2</h2>
+                <p style="font-family: Water Brush;font-weight: 500;font-size: 2em;">Something about Image 2 blah blah blah</p>
+            </div>
+        </div>
+        
+        <!-- 3rd Image -->
+        
+        <div class="slide">
+            <img src="home/slideimg3.jpg" alt="1st img">
+            <div class="info">
+                <h2 style="font-family: Water Brush;font-weight: 900;font-size: 4em;">Creation Never Ends Here</h2>
+                <p style="font-family: Water Brush;font-weight: 500;font-size: 2em;">Multiple Variety,Best Quality Yarns.</p>
+            </div>
+        </div>
+        
+        <!-- 4th Image -->
+        
+        <div class="slide">
+            <img src="home/slideimg4.jpg" alt="3rd img">
+            <div class="info">
+                <h2 style="font-family: Water Brush;font-weight: 900;font-size: 4em;">Image 4</h2>
+                <p style="font-family: Water Brush;font-weight: 500;font-size: 2em;">Something about Image 4 blah blah blah</p>
+            </div>
+        </div>
+
+        <!-- Slide change Buttons -->
+
+        <div class="navigation">
+            <i class="fa fa-chevron-left prev-btn"></i>
+            <i class="fa fa-chevron-right next-btn"></i>
+        </div>
+        <div class="navigation-visibility">
+            <div class="slide-icon active"></div>
+            <div class="slide-icon"></div>
+            <div class="slide-icon"></div>
+            <div class="slide-icon"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const slider = document.querySelector(".slider");
+        const nextBtn = document.querySelector(".next-btn");
+        const prevBtn = document.querySelector(".prev-btn");
+        const slides = document.querySelectorAll(".slide");
+        const slideIcons = document.querySelectorAll(".slide-icon");
+        const numberOfSlides = slides.length;
+        var slideNumber=0;
+
+        //Next Button Working
+
+        nextBtn.addEventListener("click", () => {
+
+            slides.forEach((slide) => {
+                slide.classList.remove("active");
+            });
+
+            slideIcons.forEach((slideIcon) => {
+                slideIcon.classList.remove("active");
+            });
+
+            slideNumber++;
+            if(slideNumber>(numberOfSlides - 1)){
+                slideNumber = 0;
+            }
+
+            slides[slideNumber].classList.add("active");
+            slideIcons[slideNumber].classList.add("active");
+        });
+
+        //Previous Button Working
+
+        prevBtn.addEventListener("click", () => {
+
+            slides.forEach((slide) => {
+                slide.classList.remove("active");
+            });
+
+            slideIcons.forEach((slideIcon) => {
+                slideIcon.classList.remove("active");
+            });
+
+            slideNumber--;
+            if(slideNumber<0){
+                slideNumber = numberOfSlides - 1;
+            }
+
+            slides[slideNumber].classList.add("active");
+            slideIcons[slideNumber].classList.add("active");
+        });
+
+        //Autoplayer
+
+        var playSlider;
+
+        var repeater = () => {
+            playSlider = setInterval(function(){
+                slides.forEach((slide) => {
+                    slide.classList.remove("active");
+                });
+
+                slideIcons.forEach((slideIcon) => {
+                    slideIcon.classList.remove("active");
+                });
+
+                slideNumber++;
+                if(slideNumber>(numberOfSlides - 1)){
+                    slideNumber = 0;
+                }
+
+                slides[slideNumber].classList.add("active");
+                slideIcons[slideNumber].classList.add("active");
+            }, 3000);
+        }
+        repeater();
+
+        //Stopping the autoplay on mouse hover
+        slider.addEventListener("mouseover", () => {
+            clearInterval(playSlider);
+        });
+
+        //Start after mouseout
+        slider.addEventListener("mouseout", () => {
+            repeater();
+        });
+    </script>
+    <center>
+        <div class="hometext">
+            <h1 style="font-family: Dancing Script;font-weight: 800;font-size: 2.5em;">Welcome</h1>
+            <p style="font-family: Dancing Script;font-weight: 500;font-size: 1.5em;">Hello! Welcome to Guru Enterprise. We are known for our good quality yarns</p>
+        </div>
+    </center>
+</body>
+</html>
